@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Watch Monitor Fixture</title>
+  <style>
+    :root { color-scheme: light; font-family: Arial, sans-serif; color: #222; background: #f6f6ef; }
+    body { margin: 0; }
+    .page { width: min(900px, calc(100% - 32px)); margin: 32px auto; }
+    .topbar { padding: 12px 16px; background: #ff6600; border-radius: 4px 4px 0 0; }
+    .topbar h1 { margin: 0; font-size: 18px; }
+    .topbar p { margin: 6px 0 0; font-size: 13px; }
+    .panel { padding: 20px; background: #fff; border: 1px solid #ddd; border-top: 0; }
+    .headline { margin: 0 0 8px; font-size: 28px; }
+    .description { margin: 0 0 20px; color: #555; }
+    .story-list { display: grid; gap: 10px; }
+    .story { padding: 12px; border: 1px solid #ddd; background: #fafafa; }
+    .title { color: #111; font-weight: 700; text-decoration: none; }
+    .title:hover { text-decoration: underline; }
+    .meta { margin-top: 7px; color: #777; font-size: 13px; }
+    .score, .comments { margin-right: 12px; }
+    .noise { margin: 22px 0 0; padding: 10px; color: #777; background: #f3f3f3; font-size: 12px; }
+    .test-notes { margin-top: 20px; padding-top: 16px; border-top: 1px solid #ddd; font-size: 13px; color: #555; }
+    code { padding: 2px 4px; background: #f0f0f0; }
+  </style>
+</head>
+<body>
+  <main id="watch-fixture" class="page" data-fixture-version="A">
+    <header class="topbar">
+      <h1>Watch Monitor Fixture</h1>
+      <p id="fixture-version">Fixture version A</p>
+    </header>
+
+    <section class="panel">
+      <!-- Change one field at a time for repeatable monitoring tests. -->
+      <h2 class="headline">Monitor target headline A</h2>
+      <p class="description">A small public page for comparing full-page and selector monitoring.</p>
+
+      <section class="story-list" aria-label="Stories">
+        <article class="story" data-story-id="story-1">
+          <a class="title" href="/story-1">Story title A</a>
+          <div class="meta"><span class="score">10 points</span><span class="comments">2 comments</span></div>
+        </article>
+        <article class="story" data-story-id="story-2">
+          <a class="title" href="/story-2">Story title B</a>
+          <div class="meta"><span class="score">20 points</span><span class="comments">4 comments</span></div>
+        </article>
+        <article class="story" data-story-id="story-3">
+          <a class="title" href="/story-3">Story title C</a>
+          <div class="meta"><span class="score">30 points</span><span class="comments">6 comments</span></div>
+        </article>
+      </section>
+
+      <!-- Edit this line to create a noise-only change. -->
+      <p class="noise" id="noise">Last fixture edit: 2026-09-01T10:00:00Z</p>
+
+      <div class="test-notes">
+        Stable selectors: <code>.headline</code>, <code>.story .title</code>,
+        <code>.story[data-story-id="story-1"] .title</code>, <code>.story .score</code>,
+        <code>.noise</code>, and <code>.watch-test-not-found</code> (zero matches).
+      </div>
+    </section>
+  </main>
+</body>
+</html>
