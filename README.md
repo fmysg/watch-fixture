@@ -35,3 +35,13 @@ Change only one item per commit, then wait for the published page to update:
 - Restore the previous content to test a rollback.
 
 Keep the public URL stable. Do not add cache-busting query parameters to the monitor URL; record the commit SHA and publish time in the test log instead.
+
+## Nimble Map URL discovery tests
+
+The fixture contains three URL-discovery cases. All three test pages are intentionally absent from `sitemap.xml`:
+
+- `fresh-html-20260921-a7f3.html` is a normal HTML link from the homepage. It tests page-link discovery with `sitemap=skip`.
+- `js-only-20260921-c44e.html` is inserted by JavaScript after page load. It tests whether the mapper evaluates rendered links.
+- `orphan-20260921-b91c.html` is not linked from any page. It tests whether a mapper returns URLs from a source other than the current page graph.
+
+Use `domain_filter=domain` so the external `example.com` control link is excluded. For cache-sensitive tests, replace the path token (`20260921-a7f3`, etc.) with a new value on every run instead of adding only a query string. After pushing a commit, wait at least 10-15 minutes for GitHub Pages and its CDN to publish the change, then verify the homepage and each new page directly before calling Map.
